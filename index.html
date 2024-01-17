@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./images/brain.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Quicksand&display=swap" rel="stylesheet">
+    <style>
+
+    </style>
+    <script src="https://kit.fontawesome.com/c962146853.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="./index.html">
+                <img src="./images/brain.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
+                Quiz App
+            </a>
+        </div>
+    </nav>
+    <div class="quiz-app">
+        <h3 class="title-category" style="color:white;font-weight:bolder;  margin-top: 10px;
+"></h3>
+        <hr>
+        <div class="startQuiz">
+            <button id="start-quiz" onclick="showCategories()">Start Quiz</button>
+        </div>
+        <div id="category-container">
+
+            <i class="fa-solid fa-xmark" onclick="collapse()"></i>
+            <h3 class="selectCategory" style="color:#ff866c;font-family:Oswald">Select a Category</h3>
+            <div id="category-box-container">
+                <!-- Categories will be displayed here -->
+
+                <div onclick="loadQuestions('General')" class="category-box"><img class="category-box-image"
+                        src='./images/general knowledge.png' />
+                    <p>General Knowledge</p>
+                </div>
+                <div onclick="loadQuestions('History')" class="category-box"><img class="category-box-image"
+                        src='./images/history.png' />
+                    <p>History</p>
+                </div>
+                <div onclick="loadQuestions('Science')" class="category-box"><img class="category-box-image"
+                        src="./images/science.png" />
+                    <p>Science</p>
+                </div>
+                <div onclick="loadQuestions('Anime')" class="category-box"><img class="category-box-image"
+                        src="./images/anime.png">
+                    <p>Anime</p>
+                </div>
+                <div onclick="loadQuestions('Sports')" class="category-box"><img class="category-box-image"
+                        src="./images/sports.png">
+                    <p>Sports</p>
+                </div>
+                <div onclick="loadQuestions('MoviesAndTVShows')" class="category-box"><img class="category-box-image"
+                        src="./images/movies.png">
+                    <p>Movies and TV shows</p>
+                </div>
+                <div onclick="loadQuestions('Literature')" class="category-box"><img class="category-box-image"
+                        src="./images/literature.png">
+                    <p>Literature</p>
+                </div>
+
+                <div onclick="loadQuestions('FoodAndCuisine')" class="category-box"><img class="category-box-image"
+                        src="./images/food and cuisine.png">
+                    <p>Food And Cuisine</p>
+                </div>
+                <div onclick="loadQuestions('Mythology')" class="category-box"><img class="category-box-image"
+                        src="./images/mythology.png">
+                    <p>Mythology</p>
+                </div>
+
+            </div>
+            <audio id="alertAudio" src="./audio/timer.mp3" preload="auto"></audio>
+        </div>
+        <div class="timer-box">
+
+        </div>
+        <div class="question-container">
+            <div class="lines">
+
+            </div>
+            <div class="question-box">
+
+                <!-- <h3 style="color:white">What is the capital of France?</h3>
+            <div class="option" onclick="changecolor(event)">
+                <span>
+                    Paris
+                </span>
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div class="option">
+                <span>Lyon</span>
+                <i class="fa-solid fa-circle-xmark"></i>
+            </div>
+
+            <div class="option">
+                <span>
+                    Bordeaux
+                </span><i class="fa-solid fa-circle-xmark"></i>
+            </div>
+            <div class="option">
+                <span>
+                    Marseille
+                </span>
+                <i class="fa-solid fa-circle-xmark"></i>
+            </div> -->
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
